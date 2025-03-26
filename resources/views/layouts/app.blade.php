@@ -54,6 +54,11 @@
                                     {{ __('Users') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('products.index') }}" role="button">
+                                    {{ __('Products') }}
+                                </a>
+                            </li>
                             <li class="nav-item dropdown">
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -81,7 +86,7 @@
         <main class="py-4">
             @section('success')
                     <div class="alert alert-success" role="alert">
-                        {{ $value }}
+                        {{ session('success') }}
                     </div>
             @endsection
             @yield('content')
