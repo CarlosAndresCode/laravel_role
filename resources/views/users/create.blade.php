@@ -15,28 +15,32 @@
                     </div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+                        <form action="{{ route('users.store') }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <div class="mb-3">
+                                <label for="name" class="form-label">{{ __('Name') }}</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name')  }}">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
-                        @endif
-                            <form action="{{ route('users.store') }}" method="POST">
-                                @csrf
-                                @method('POST')
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">{{ __('Name') }}</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name')  }}">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">{{ __('Email') }}</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">{{ __('Password') }}</label>
-                                    <input type="password" class="form-control" id="password" name="password">
-                                </div>
-                                <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
-                            </form>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">{{ __('Email') }}</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                                @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
+                        </form>
                     </div>
                 </div>
             </div>

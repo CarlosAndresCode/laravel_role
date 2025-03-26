@@ -79,6 +79,11 @@
         </nav>
 
         <main class="py-4">
+            @section('success')
+                    <div class="alert alert-success" role="alert">
+                        {{ $value }}
+                    </div>
+            @endsection
             @yield('content')
         </main>
     </div>
